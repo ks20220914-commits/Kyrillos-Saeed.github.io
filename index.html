@@ -168,26 +168,74 @@
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
         }
-
-        /* ---------- COUNTERS ---------- */
-        .counters {
+        /* ---------- STATS CIRCLES ---------- */
+        .stats-circles {
             display: flex;
             justify-content: space-around;
             flex-wrap: wrap;
-            gap: 2rem;
-            padding: 2.5rem 0;
+            gap: 1.5rem;
+            padding: 2.5rem 1rem;
             background: #f8fafc;
             border-bottom: 1px solid #e2e8f0;
-            transition: background 0.3s;
         }
-        .counter-item { text-align: center; }
-        .counter-item .number {
-            font-size: 2.8rem;
+        .stat-circle {
+            position: relative;
+            width: 100px;
+            height: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .stat-circle svg {
+            width: 100px;
+            height: 100px;
+            transform: rotate(-90deg);
+        }
+        .stat-circle svg circle:first-child {
+            fill: none;
+            stroke: #e2e8f0;
+            stroke-width: 8;
+        }
+        .stat-circle svg circle:last-child {
+            fill: none;
+            stroke: #38bdf8;
+            stroke-width: 8;
+            stroke-linecap: round;
+            animation: circleAnim 1.5s ease forwards;
+        }
+        @keyframes circleAnim {
+        from { stroke-dashoffset: 314; }
+        to { stroke-dashoffset: var(--offset); }
+        }
+        .stat-circle .circle-number {
+            position: absolute;
+            top: 30%;
+            font-size: 1.8rem;
             font-weight: 700;
-            color: #38bdf8;
+            color: #0f172a;
         }
-        .counter-item .label { font-size: 0.9rem; color: #64748b; }
-
+        .stat-circle .circle-label {
+            position: absolute;
+            bottom: 5%;
+            font-size: 0.75rem;
+            color: #64748b;
+            font-weight: 600;
+        }
+            body.dark-mode .stats-circles {
+            background: #0f172a;
+            border-color: #334155;
+        }
+            body.dark-mode .stat-circle .circle-number {
+            color: #f1f5f9;
+        }
+            body.dark-mode .stat-circle .circle-label {
+            color: #94a3b8;
+        }
+            body.dark-mode .stat-circle svg circle:first-child {
+            stroke: #334155;
+        }
+        
         /* ---------- SECTIONS ---------- */
         section {
             padding: 3.5rem 3rem;
@@ -751,20 +799,50 @@
         </div>
     </div>
 </section>
-
-    <!-- ===== COUNTERS ===== -->
-    <div class="counters">
-        <div class="counter-item"><div class="number" data-target="6">0</div><div class="label">Projects</div>
-        </div>
-        <div class="counter-item"><div class="number" data-target="8">0</div><div class="label">Courses</div>
-        </div>
-        <div class="counter-item"><div class="number" data-target="5">0</div><div class="label">Years Studying</div>
-        </div>
-        <div class="counter-item"><div class="number" data-target="7">0</div><div class="label">Technologies</div>
-        </div>
-        <div class="counter-item"><div class="number" data-target="12">0</div><div class="label">Certificates</div>
-        </div>
+<!-- ===== STATS CIRCLES ===== -->
+<div class="stats-circles">
+    <div class="stat-circle">
+        <svg viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="50"/>
+            <circle cx="60" cy="60" r="50" style="stroke-dasharray: 314; stroke-dashoffset: calc(314 - (314 * 80) / 100);"/>
+        </svg>
+        <div class="circle-number">5</div>
+        <div class="circle-label">Projects</div>
     </div>
+    <div class="stat-circle">
+        <svg viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="50"/>
+            <circle cx="60" cy="60" r="50" style="stroke-dasharray: 314; stroke-dashoffset: calc(314 - (314 * 90) / 100);"/>
+        </svg>
+        <div class="circle-number">7</div>
+        <div class="circle-label">Courses</div>
+    </div>
+    <div class="stat-circle">
+        <svg viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="50"/>
+            <circle cx="60" cy="60" r="50" style="stroke-dasharray: 314; stroke-dashoffset: calc(314 - (314 * 60) / 100);"/>
+        </svg>
+        <div class="circle-number">4</div>
+        <div class="circle-label">Years</div>
+    </div>
+    <div class="stat-circle">
+        <svg viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="50"/>
+            <circle cx="60" cy="60" r="50" style="stroke-dasharray: 314; stroke-dashoffset: calc(314 - (314 * 70) / 100);"/>
+        </svg>
+        <div class="circle-number">6</div>
+        <div class="circle-label">Tech</div>
+    </div>
+    <div class="stat-circle">
+        <svg viewBox="0 0 120 120">
+            <circle cx="60" cy="60" r="50"/>
+            <circle cx="60" cy="60" r="50" style="stroke-dasharray: 314; stroke-dashoffset: calc(314 - (314 * 95) / 100);"/>
+        </svg>
+        <div class="circle-number">11</div>
+        <div class="circle-label">Certificates</div>
+    </div>
+</div>
+    
 
     <!-- ===== ABOUT ===== -->
     <section id="about">
