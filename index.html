@@ -1,3 +1,1222 @@
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kyrillos Saeed | Ultimate Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ---------- RESET & BASE ---------- */
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            color: #0f172a;
+            line-height: 1.6;
+            transition: background 0.3s, color 0.3s;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.06);
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            transition: background 0.3s;
+        }
 
-      
-          
+        /* ---------- PARTICLES ---------- */
+        #particles-js {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        /* ---------- NAVBAR ---------- */
+        .navbar {
+            background: #0f172a;
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: background 0.3s;
+        }
+        .navbar .logo {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .navbar .logo img { height: 35px; width: 35px; border-radius: 50%; border: 2px solid #38bdf8; }
+        .navbar .logo span { color: #38bdf8; }
+        .navbar .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .navbar .nav-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.2s;
+            font-weight: 500;
+        }
+        .navbar .nav-links a:hover { color: #38bdf8; }
+        .navbar .nav-links a i { margin-right: 4px; }
+        #darkModeToggle {
+            background: none;
+            border: none;
+            color: #94a3b8;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        #darkModeToggle:hover { color: #38bdf8; }
+
+        /* ---------- COVER ---------- */
+        .cover {
+            position: relative;
+            color: white;
+            padding: 5rem 3rem;
+            text-align: center;
+            overflow: hidden;
+            min-height: 550px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .cover .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.7);
+            z-index: 1;
+        }
+        .cover .content {
+            position: relative;
+            z-index: 3;
+        }
+        .cover h1 {
+            font-size: 3.8rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+        .cover .title {
+            font-size: 1.4rem;
+            color: #94a3b8;
+            font-weight: 400;
+        }
+        .cover .subtitle {
+            font-size: 1.1rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0.5rem auto 1.5rem;
+        }
+        .cover .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .cover .btn-group a {
+            padding: 0.7rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+            font-size: 0.95rem;
+        }
+        .btn-primary { background: #38bdf8; color: #0f172a; }
+        .btn-primary:hover { background: #7dd3fc; transform: translateY(-3px); }
+        .btn-secondary { border: 2px solid #38bdf8; color: #38bdf8; }
+        .btn-secondary:hover { background: #38bdf8; color: #0f172a; transform: translateY(-3px); }
+
+        /* Typing Effect */
+        .typing-text {
+            font-size: 1.2rem;
+            color: #38bdf8;
+            font-weight: 600;
+            min-height: 40px;
+        }
+        .typing-text .cursor {
+            display: inline-block;
+            width: 3px;
+            background: #38bdf8;
+            animation: blink 0.8s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* ---------- COUNTERS ---------- */
+        .counters {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+            padding: 2.5rem 0;
+            background: #f8fafc;
+            border-bottom: 1px solid #e2e8f0;
+            transition: background 0.3s;
+        }
+        .counter-item { text-align: center; }
+        .counter-item .number {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #38bdf8;
+        }
+        .counter-item .label { font-size: 0.9rem; color: #64748b; }
+
+        /* ---------- SECTIONS ---------- */
+        section {
+            padding: 3.5rem 3rem;
+            border-bottom: 1px solid #f1f5f9;
+            transition: border-color 0.3s;
+            position: relative;
+        }
+        section:last-of-type { border-bottom: none; }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.8rem;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: color 0.3s;
+        }
+        .section-title i { color: #38bdf8; font-size: 1.8rem; }
+
+        /* ---------- ABOUT (with Floating Buttons) ---------- */
+        .about-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+        }
+        .about-image { flex: 0 0 250px; text-align: center; }
+        .about-image img {
+            width: 100%;
+            max-width: 250px;
+            border-radius: 20px;
+            border: 4px solid #38bdf8;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .about-text { flex: 1; min-width: 250px; font-size: 1.05rem; color: #1e293b; transition: color 0.3s; }
+        .about-text p { margin-bottom: 0.75rem; }
+        .floating-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+        .floating-buttons a {
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .floating-buttons .whatsapp { background: #25D366; color: white; }
+        .floating-buttons .whatsapp:hover { transform: scale(1.05); }
+        .floating-buttons .telegram { background: #0088cc; color: white; }
+        .floating-buttons .telegram:hover { transform: scale(1.05); }
+        .floating-buttons .email { background: #ea4335; color: white; }
+        .floating-buttons .email:hover { transform: scale(1.05); }
+             /* ---------- SKILLS TREE ---------- */
+        .skills-tree {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        .skill-category h4 {
+            color: #0f172a;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.4rem;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s;
+        }
+        .skill-category h4 i { color: #38bdf8; }
+        .skill-bar { margin-bottom: 0.8rem; }
+        .skill-bar .skill-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #1e293b;
+            margin-bottom: 0.2rem;
+            transition: color 0.3s;
+        }
+        .skill-bar .bar {
+            width: 100%;
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: background 0.3s;
+        }
+        .skill-bar .bar .fill {
+            height: 100%;
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            border-radius: 10px;
+            width: 0%;
+            transition: width 1.5s ease;
+        }
+        .skill-bar .bar .fill.animated { width: var(--width); }
+
+        /* ---------- SOFT SKILLS ---------- */
+        .soft-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 0.5rem;
+        }
+        .soft-skills span {
+            background: #f1f5f9;
+            padding: 0.4rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            color: #1e293b;
+            border: 1px solid #e2e8f0;
+            transition: 0.3s;
+        }
+        .soft-skills span:hover {
+            background: #38bdf8;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* ---------- TIMELINE ---------- */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #38bdf8;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: #38bdf8;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 0 0 3px #38bdf8;
+        }
+        .timeline-item h4 { color: #0f172a; transition: color 0.3s; }
+        .timeline-item .date {
+            color: #38bdf8;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .timeline-item p { color: #64748b; font-size: 0.95rem; transition: color 0.3s; }
+
+        /* ---------- PROJECTS (with Carousel) ---------- */
+        .projects-carousel {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            padding: 1rem 0.5rem;
+            scroll-snap-type: x mandatory;
+        }
+        .projects-carousel::-webkit-scrollbar { height: 8px; }
+        .projects-carousel::-webkit-scrollbar-track { background: #e2e8f0; border-radius: 10px; }
+        .projects-carousel::-webkit-scrollbar-thumb { background: #38bdf8; border-radius: 10px; }
+        .project-card {
+            min-width: 300px;
+            background: #f8fafc;
+            padding: 1.5rem 2rem;
+            border-radius: 16px;
+            scroll-snap-align: start;
+            border-left: 4px solid #38bdf8;
+            transition: 0.3s;
+            flex: 0 0 auto;
+        }
+        .project-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+        .project-card h3 { color: #0f172a; margin-bottom: 0.25rem; }
+        .project-card .tech { font-size: 0.85rem; color: #64748b; margin-bottom: 0.5rem; }
+        .project-card .tech i { color: #38bdf8; }
+        .project-card .btn-sm {
+            display: inline-block;
+            margin-top: 0.75rem;
+            padding: 0.4rem 1.2rem;
+            background: #38bdf8;
+            color: #0f172a;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .project-card .btn-sm:hover { background: #7dd3fc; }
+
+        /* ---------- FILTER PROJECTS ---------- */
+        .filter-buttons {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+        .filter-buttons button {
+            padding: 0.4rem 1.2rem;
+            border: 2px solid #38bdf8;
+            background: transparent;
+            color: #38bdf8;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .filter-buttons button.active,
+        .filter-buttons button:hover {
+            background: #38bdf8;
+            color: #0f172a;
+        }
+
+        /* ---------- READING LIST ---------- */
+        .reading-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        .reading-item {
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .reading-item:hover { transform: translateY(-3px); border-color: #38bdf8; }
+        .reading-item i { font-size: 2rem; color: #38bdf8; margin-bottom: 0.5rem; }
+        .reading-item h4 { color: #0f172a; font-size: 0.95rem; }
+        .reading-item .status {
+            font-size: 0.8rem;
+            color: #38bdf8;
+            font-weight: 600;
+        }
+
+        /* ---------- LANGUAGES ---------- */
+        .languages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+        .language-item {
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            transition: 0.3s;
+        }
+        .language-item:hover { border-color: #38bdf8; transform: translateY(-3px); }
+        .language-item .level {
+            display: inline-block;
+            padding: 0.2rem 0.8rem;
+            background: #38bdf8;
+            color: #0f172a;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 0.3rem;
+        }
+
+        /* ---------- TESTIMONIALS ---------- */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .testimonial {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            transition: 0.3s;
+        }
+        .testimonial:hover { transform: translateY(-3px); border-color: #38bdf8; }
+        .testimonial .quote {
+            font-style: italic;
+            color: #475569;
+            font-size: 0.95rem;
+        }
+        .testimonial .author {
+            font-weight: 700;
+            color: #0f172a;
+            margin-top: 0.5rem;
+        }
+        .testimonial .role {
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+            /* ---------- BLOG ---------- */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        .blog-card {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            transition: 0.3s;
+        }
+        .blog-card:hover { transform: translateY(-3px); border-color: #38bdf8; }
+        .blog-card h4 { color: #0f172a; }
+        .blog-card .date { font-size: 0.8rem; color: #64748b; }
+        .blog-card p { font-size: 0.9rem; color: #475569; margin-top: 0.3rem; }
+        .blog-card a {
+            color: #38bdf8;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* ---------- CONTACT ---------- */
+        .contact-box {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: background 0.3s;
+        }
+        .contact-box h3 { font-size: 2rem; margin-bottom: 0.5rem; }
+        .contact-box p { color: #94a3b8; margin-bottom: 1.5rem; }
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .contact-links a {
+            color: white;
+            background: rgba(255,255,255,0.08);
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .contact-links a:hover {
+            background: #38bdf8;
+            color: #0f172a;
+            border-color: #38bdf8;
+            transform: translateY(-3px);
+        }
+
+        /* ---------- CONTACT FORM ---------- */
+        .contact-form {
+            max-width: 500px;
+            margin: 2rem auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            padding: 0.8rem 1rem;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: 0.3s;
+            background: white;
+            color: #0f172a;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #38bdf8;
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+        }
+        .contact-form textarea { min-height: 120px; resize: vertical; }
+        .contact-form button {
+            padding: 0.8rem;
+            background: #38bdf8;
+            color: #0f172a;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .contact-form button:hover { background: #7dd3fc; transform: translateY(-2px); }
+
+        /* ---------- GITHUB STATS ---------- */
+        .github-stats {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .github-stat {
+            background: #f8fafc;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            min-width: 100px;
+            border: 1px solid #e2e8f0;
+            transition: 0.3s;
+        }
+        .github-stat:hover { border-color: #38bdf8; transform: translateY(-3px); }
+        .github-stat .number { font-size: 1.8rem; font-weight: 700; color: #38bdf8; }
+        .github-stat .label { font-size: 0.8rem; color: #64748b; }
+              /* ---------- BACK TO TOP ---------- */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: #38bdf8;
+            color: #0f172a;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            z-index: 999;
+        }
+        .back-to-top:hover {
+            background: #7dd3fc;
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.5);
+        }
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* ---------- FOOTER ---------- */
+        .footer {
+            background: #0f172a;
+            color: #64748b;
+            text-align: center;
+            padding: 1.5rem 2rem;
+            font-size: 0.9rem;
+            border-top: 1px solid #1e293b;
+            transition: background 0.3s;
+        }
+        .footer span { color: #38bdf8; }
+        .footer .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+        .footer .social-icons a {
+            color: #64748b;
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+        .footer .social-icons a:hover { color: #38bdf8; transform: translateY(-3px); }
+
+        /* ---------- DARK MODE ---------- */
+        body.dark-mode {
+            background: #0f172a;
+        }
+        body.dark-mode .container {
+            background: #1e293b;
+        }
+        body.dark-mode section {
+            border-bottom-color: #334155;
+        }
+        body.dark-mode .section-title {
+            color: #f1f5f9;
+        }
+        body.dark-mode .about-text,
+        body.dark-mode .project-card p,
+        body.dark-mode .skill-info span,
+        body.dark-mode .testimonial .quote,
+        body.dark-mode .blog-card p,
+        body.dark-mode .reading-item h4,
+        body.dark-mode .language-item h4,
+        body.dark-mode .github-stat .label,
+        body.dark-mode .timeline-item p,
+        body.dark-mode .counter-item .label,
+        body.dark-mode .floating-buttons a {
+            color: #94a3b8;
+        }
+        body.dark-mode .project-card,
+        body.dark-mode .testimonial,
+        body.dark-mode .blog-card,
+        body.dark-mode .reading-item,
+        body.dark-mode .language-item,
+        body.dark-mode .github-stat,
+        body.dark-mode .soft-skills span,
+        body.dark-mode .counter-item .number,
+        body.dark-mode .counters {
+            background: #0f172a;
+            border-color: #334155;
+            color: #f1f5f9;
+        }
+        body.dark-mode .skill-category h4 {
+            color: #f1f5f9;
+        }
+        body.dark-mode .soft-skills span {
+            background: #1e293b;
+        }
+        body.dark-mode .skill-bar .bar {
+            background: #334155;
+        }
+        body.dark-mode .contact-box {
+            background: linear-gradient(135deg, #0f172a, #020617);
+        }
+        body.dark-mode .footer {
+            background: #0f172a;
+            border-top-color: #334155;
+        }
+        body.dark-mode .navbar {
+            background: #020617;
+        }
+        body.dark-mode .about-image img {
+            border-color: #7dd3fc;
+        }
+        body.dark-mode .contact-form input,
+        body.dark-mode .contact-form textarea {
+            background: #0f172a;
+            color: #f1f5f9;
+            border-color: #334155;
+        }
+        body.dark-mode .timeline-item h4 {
+            color: #f1f5f9;
+        }
+         /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; gap: 0.5rem; padding: 0.8rem 1rem; }
+            .navbar .nav-links { justify-content: center; gap: 0.8rem; }
+            .navbar .nav-links a { font-size: 0.8rem; }
+            .cover h1 { font-size: 2.2rem; }
+            .cover { padding: 2.5rem 1.5rem; }
+            section { padding: 2rem 1.5rem; }
+            .skills-tree { grid-template-columns: 1fr; }
+            .languages-grid { grid-template-columns: 1fr 1fr; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .blog-grid { grid-template-columns: 1fr; }
+            .contact-links { flex-direction: column; align-items: center; }
+            .about-wrapper { flex-direction: column; text-align: center; }
+            .about-image { flex: 0 0 auto; }
+            .counters { gap: 1rem; }
+            .counter-item .number { font-size: 1.8rem; }
+            .projects-carousel { gap: 1rem; }
+            .project-card { min-width: 250px; }
+        }
+        @media (max-width: 480px) {
+            .languages-grid { grid-template-columns: 1fr; }
+            .project-card { min-width: 200px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="images/cover-logo.jpg" alt="Logo">
+            Kyrillos <span>Saeed</span>
+        </div>
+        <div class="nav-links">
+            <a href="#home"><i class="fas fa-home"></i> Home</a>
+            <a href="#about"><i class="fas fa-user"></i> About</a>
+            <a href="#skills"><i class="fas fa-list-check"></i> Skills</a>
+            <a href="#projects"><i class="fas fa-folder-open"></i> Projects</a>
+            <a href="#education"><i class="fas fa-graduation-cap"></i> Education</a>
+            <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+            <button id="darkModeToggle"><i class="fas fa-moon"></i></button>
+        </div>
+    </nav>
+  <!-- ===== HOME / COVER (with Particles) ===== -->
+    <section id="home" style="padding:0; position:relative; overflow:hidden;">
+        <div class="cover">
+            <div class="overlay"></div>
+            <div id="particles-js"></div>
+            <div class="content">
+                <h1>KYRILLOS SAEED</h1>
+                <p class="title">Telecommunications Engineering Student</p>
+                <div class="typing-text">
+                    <span id="typed-text"></span><span class="cursor">|</span>
+                </div>
+                <p class="subtitle">Data Science Enthusiast · Networking · Programming · Cloud Computing</p>
+                <div class="btn-group">
+                    <a href="#projects" class="btn-primary"><i class="fas fa-eye"></i> View Projects</a>
+                    <a href="#contact" class="btn-secondary"><i class="fas fa-paper-plane"></i> Contact Me</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== COUNTERS ===== -->
+    <div class="counters">
+        <div class="counter-item"><div class="number" data-target="3">0</div><div class="label">Projects</div></div>
+        <div class="counter-item"><div class="number" data-target="6">0</div><div class="label">Courses</div></div>
+        <div class="counter-item"><div class="number" data-target="4">0</div><div class="label">Years Studying</div></div>
+        <div class="counter-item"><div class="number" data-target="10">0</div><div class="label">Technologies</div></div>
+        <div class="counter-item"><div class="number" data-target="5">0</div><div class="label">Certificates</div></div>
+    </div>
+
+    <!-- ===== ABOUT (with Floating Buttons) ===== -->
+    <section id="about">
+        <h2 class="section-title"><i class="fas fa-user"></i> About Me</h2>
+            <div class="about-wrapper">
+            <div class="about-image"><img src="images/cover-logo.jpg" alt="Kyrillos Saeed"></div>
+            <div class="about-text">
+                <p>I am a Telecommunications Engineering student with a strong technical foundation and a curiosity for different areas of technology.</p>
+                <p>My journey combines Telecommunications and Networking with Programming and Data-oriented technologies. I have developed my skills through university studies, technical training, and practical projects.</p>
+                <p>I have completed training in CCNA and Mobile Communications, while also exploring Data Science, Python, HTML & CSS, and Cloud Computing.</p>
+                <div class="floating-buttons">
+                    <a href="https://wa.me/201234567890" class="whatsapp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    <a href="https://t.me/kyrillos" class="telegram" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
+                    <a href="mailto:kyrillos.saeed@example.com" class="email"><i class="fas fa-envelope"></i> Email</a>
+                    <a href="#" class="email" onclick="downloadCV()"><i class="fas fa-file-pdf"></i> Download CV</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SKILLS (with Progress Bars) ===== -->
+    <section id="skills">
+        <h2 class="section-title"><i class="fas fa-list-check"></i> Technical Skills</h2>
+        <div class="skills-tree">
+            <div class="skill-category">
+                <h4><i class="fas fa-code"></i> Programming</h4>
+                <div class="skill-bar"><div class="skill-info"><span>Python</span><span>80%</span></div><div class="bar"><div class="fill" style="--width:80%;"></div></div></div>
+                <div class="skill-bar"><div class="skill-info"><span>C++</span><span>65%</span></div><div class="bar"><div class="fill" style="--width:65%;"></div></div></div>
+                <div class="skill-bar"><div class="skill-info"><span>MATLAB</span><span>60%</span></div><div class="bar"><div class="fill" style="--width:60%;"></div></div></div>
+                <div class="skill-bar"><div class="skill-info"><span>Assembly</span><span>50%</span></div><div class="bar"><div class="fill" style="--width:50%;"></div></div></div>
+            </div>
+            <div class="skill-category">
+                <h4><i class="fas fa-network-wired"></i> Networking & Telecom</h4>
+                <div class="skill-bar"><div class="skill-info"><span>CCNA</span><span>75%</span></div><div class="bar"><div class="fill" style="--width:75%;"></div></div></div>
+                <div class="skill-bar"><div class="skill-info"><span>Computer Networks</span><span>70%</span></div><div class="bar"><div class="fill" style="--width:70%;"></div></div></div>
+                <div class="skill-bar"><div class="skill-info"><span>Mobile Communications</span><span>65%</span></div><div class="bar"><div class="fill" style="--width:65%;"></div></div></div>
+                <div class="skill-bar"><div class="skill-info"><span>Telecom Fundamentals</span><span>70%</span></div><div class="bar"><div class="fill" style="--width:70%;"></div></div></div>
+            </div>
+            <div class="skill-category">
+                <h4><i class="fas fa-database"></i> Data & Cloud</h4>
+                <div class="skill-bar"><div class="skill-info"><span>Data Science</span><span>70%</span></div><div class="bar"><div class="fill" style="--width:70%;"></div></div></div>
+                <div class="skill-bar"><div class="skill-info"><span>Data Analysis</span><span>65%</span></div><div class="bar"><div class="fill" style="--width:65%;"></div></div></div>
+                <div class="skill-bar"><div class="skill-info"><span>AWS Cloud</span><span>55%</span></div><div class="bar"><div class="fill" style="--width:55%;"></div></div></div>
+            </div>
+            <div class="skill-category">
+                <h4><i class="fas fa-laptop-code"></i> Web & Tools</h4>
+                <div class="skill-bar"><div class="skill-info"><span>HTML</span><span>80%</span></div><div class="bar"><div class="fill" style="--width:80%;"></div></div></div>
+                <div class="skill-bar"><div class="skill-info"><span>CSS</span><span>75%</span></div><div class="bar"><div class="fill" style="--width:75%;"></div></div></div>
+                <div class="skill-bar"><div class="skill-info"><span>Git & GitHub</span><span>70%</span></div><div class="bar"><div class="fill" style="--width:70%;"></div></div></div>
+                <div class="skill-bar"><div class="skill-info"><span>VS Code</span><span>85%</span></div><div class="bar"><div class="fill" style="--width:85%;"></div></div></div>
+            </div>
+        </div>
+        <h4 style="margin-top:2rem; color:#0f172a; transition:color 0.3s;"><i class="fas fa-heart" style="color:#38bdf8;"></i> Soft Skills</h4>
+        <div class="soft-skills">
+            <span>Problem Solving</span><span>Analytical Thinking</span><span>Communication</span>
+            <span>Teamwork</span><span>Time Management</span><span>Continuous Learning</span>
+            <span>Leadership</span><span>Adaptability</span>
+        </div>
+    </section>
+
+    <!-- ===== LANGUAGES ===== -->
+    <section>
+        <h2 class="section-title"><i class="fas fa-language"></i> Languages</h2>
+        <div class="languages-grid">
+            <div class="language-item"><h4>🇪🇬 Arabic</h4><div class="level">Native</div></div>
+            <div class="language-item"><h4>🇬🇧 English</h4><div class="level">Fluent (B2+)</div></div>
+            <div class="language-item"><h4>🇫🇷 French</h4><div class="level">Beginner (A1)</div></div>
+        </div>
+    </section>
+
+    <!-- ===== PROJECTS (with Carousel & Filter) ===== -->
+    <section id="projects">
+        <h2 class="section-title"><i class="fas fa-folder-open"></i> Projects</h2>
+        <div class="filter-buttons">
+            <button class="active" data-filter="all">All</button>
+            <button data-filter="python">Python</button>
+            <button data-filter="web">Web</button>
+            <button data-filter="networking">Networking</button>
+            <button data-filter="data">Data</button>
+        </div>
+        <div class="projects-carousel" id="projectsCarousel">
+            <div class="project-card" data-category="python data">
+                <h3>📡 Telecom Network Analyzer</h3>
+                <div class="tech"><i class="fas fa-code"></i> Python · Data Analysis · Database · Dashboard</div>
+                <p>A practical telecom-focused project designed to analyze network-related data and provide meaningful insights through a user-friendly dashboard.</p>
+                <a href="https://github.com/ks20220914-commits" target="_blank" class="btn-sm"><i class="fab fa-github"></i> View on GitHub</a>
+            </div>
+            <div class="project-card" data-category="web">
+                <h3>🌐 Responsive Portfolio Website</h3>
+                <div class="tech"><i class="fas fa-code"></i> HTML · CSS · JavaScript</div>
+                <p>A fully responsive portfolio website showcasing skills, projects, and professional experience with modern design and interactive elements.</p>
+                <a href="#" class="btn-sm"><i class="fas fa-eye"></i> Live Demo</a>
+            </div>
+            <div class="project-card" data-category="networking">
+                <h3>🔌 Network Configuration Lab</h3>
+                <div class="tech"><i class="fas fa-network-wired"></i> CCNA · Cisco · Routing · Switching</div>
+                <p>Complete network configuration and troubleshooting lab with VLANs, routing protocols, and security configurations.</p>
+                <a href="#" class="btn-sm"><i class="fas fa-file-alt"></i> Documentation</a>
+            </div>
+            <div class="project-card" data-category="data python">
+                <h3>📊 Data Analysis Dashboard</h3>
+                <div class="tech"><i class="fas fa-code"></i> Python · Pandas · Matplotlib</div>
+                <p>Interactive data analysis dashboard for visualizing telecom network performance metrics and trends.</p>
+                <a href="#" class="btn-sm"><i class="fas fa-chart-line"></i> View Dashboard</a>
+            </div>
+        </div>
+    </section>
+    <!-- ===== TIMELINE ===== -->
+    <section>
+        <h2 class="section-title"><i class="fas fa-clock"></i> My Journey</h2>
+        <div class="timeline">
+            <div class="timeline-item"><h4>Telecommunications Engineering</h4><div class="date">2022 - Present</div><p>Studying telecommunications, networking, mobile communications, and engineering fundamentals.</p></div>
+            <div class="timeline-item"><h4>CCNA & Networking</h4><div class="date">2023</div><p>Completed Cisco networking training with practical lab experience.</p></div>
+            <div class="timeline-item"><h4>Data Science Track (DEPI)</h4><div class="date">2024</div><p>Explored data science, analysis, and practical project development.</p></div>
+            <div class="timeline-item"><h4>AWS Cloud Computing</h4><div class="date">2024</div><p>Built foundational knowledge of cloud infrastructure and technologies.</p></div>
+        </div>
+    </section>
+
+    <!-- ===== READING LIST ===== -->
+    <section>
+        <h2 class="section-title"><i class="fas fa-book"></i> Reading List</h2>
+        <div class="reading-list">
+            <div class="reading-item"><i class="fas fa-book"></i><h4>Computer Networking: A Top-Down Approach</h4><div class="status">📖 Reading</div></div>
+            <div class="reading-item"><i class="fas fa-book"></i><h4>Python for Data Analysis</h4><div class="status">✅ Completed</div></div>
+            <div class="reading-item"><i class="fas fa-book"></i><h4>Clean Code</h4><div class="status">📖 Reading</div></div>
+            <div class="reading-item"><i class="fas fa-book"></i><h4>Introduction to Algorithms</h4><div class="status">📖 Reading</div></div>
+        </div>
+    </section>
+
+    <!-- ===== EDUCATION ===== -->
+    <section id="education">
+        <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Education</h2>
+        <div class="edu-item">
+            <h4>Bachelor of Engineering — Telecommunications Engineering</h4>
+            <div class="meta">Currently studying — Fourth Year</div>
+            <p style="color:#475569; margin-top:0.3rem; transition:color 0.3s;">Studying Telecommunications Engineering with academic exposure to networking, mobile communications, antennas, microwave engineering, information theory, electronics, and microcontrollers.</p>
+            <ul>
+                <li>Telecommunications</li><li>Computer Networks</li><li>Mobile Communications</li>
+                <li>Antennas</li><li>Microwave Engineering</li><li>Information Theory</li>
+                <li>Electronics</li><li>Microcontrollers</li>
+            </ul>
+        </div>
+        <h4 style="margin-top:1.5rem; color:#0f172a;"><i class="fas fa-certificate" style="color:#38bdf8;"></i> Courses & Training</h4>
+        <div class="training-grid">
+            <div class="training-item"><h4>CCNA</h4><div class="cat">Networking</div><p>Cisco networking fundamentals and practical understanding of computer networks.</p></div>
+            <div class="training-item"><h4>Mobile Communications</h4><div class="cat">Telecommunications</div><p>Fundamentals and concepts related to modern mobile communication systems.</p></div>
+            <div class="training-item"><h4>Data Science — DEPI</h4><div class="cat">Data Science</div><p>Exploring data-oriented technologies, programming, analysis, and practical project development.</p></div>
+            <div class="training-item"><h4>AWS Cloud Computing</h4><div class="cat">Cloud Computing</div><p>Building foundational knowledge of cloud computing and AWS technologies.</p></div>
+            <div class="training-item"><h4>Python</h4><div class="cat">Programming</div><p>Developing programming skills through practical exercises and projects.</p></div>
+            <div class="training-item"><h4>HTML & CSS</h4><div class="cat">Web Development</div><p>Building a foundation in web page structure, styling, and front-end development.</p></div>
+        </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section>
+        <h2 class="section-title"><i class="fas fa-comment-dots"></i> Testimonials</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial">
+                <div class="quote">"An exceptional student with a strong understanding of networking concepts and a passion for learning new technologies."</div>
+                <div class="author">Dr. Ahmed Hassan</div>
+                <div class="role">Professor, Telecommunications Engineering</div>
+            </div>
+            <div class="testimonial">
+                <div class="quote">"Kyrillos demonstrated excellent problem-solving skills during our CCNA training. He has a natural talent for networking."</div>
+                <div class="author">Eng. Mohamed Ali</div>
+                <div class="role">Senior Network Engineer</div>
+            </div>
+            <div class="testimonial">
+                <div class="quote">"A dedicated and hardworking student. His projects in data science show a deep understanding of data analysis and programming."</div>
+                <div class="author">Dr. Sara Kamel</div>
+                <div class="role">Data Science Instructor, DEPI</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== BLOG / ARTICLES ===== -->
+    <section>
+        <h2 class="section-title"><i class="fas fa-pen-fancy"></i> Articles</h2>
+        <div class="blog-grid">
+            <div class="blog-card">
+                <h4>Understanding Mobile Communications</h4>
+                <div class="date">March 2025</div>
+                <p>An overview of mobile communication systems, from 1G to 5G, and how they shape our connected world.</p>
+                <a href="#">Read More →</a>
+            </div>
+            <div class="blog-card">
+                <h4>Python for Network Engineers</h4>
+                <div class="date">February 2025</div>
+                <p>How Python can be used to automate network tasks, analyze data, and improve network management.</p>
+                <a href="#">Read More →</a>
+            </div>
+            <div class="blog-card">
+                <h4>Getting Started with AWS Cloud</h4>
+                <div class="date">January 2025</div>
+                <p>A beginner's guide to cloud computing and AWS services, with practical examples and best practices.</p>
+                <a href="#">Read More →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== GITHUB STATS ===== -->
+    <section>
+        <h2 class="section-title"><i class="fab fa-github"></i> GitHub Stats</h2>
+        <div class="github-stats">
+            <div class="github-stat"><div class="number" id="repoCount">0</div><div class="label">Repositories</div></div>
+            <div class="github-stat"><div class="number" id="starCount">0</div><div class="label">Stars</div></div>
+            <div class="github-stat"><div class="number" id="forkCount">0</div><div class="label">Forks</div></div>
+            <div class="github-stat"><div class="number">4</div><div class="label">Projects</div></div>
+        </div>
+        <p style="text-align:center; margin-top:1rem; color:#64748b;">
+            <i class="fas fa-code"></i> 
+            <a href="https://github.com/ks20220914-commits" target="_blank" style="color:#38bdf8; text-decoration:none; font-weight:600;">
+                github.com/ks20220914-commits
+            </a>
+        </p>
+    </section>
+      <!-- ===== CONTACT ===== -->
+    <section id="contact" style="border-bottom:none;">
+        <div class="contact-box">
+            <h3><i class="fas fa-paper-plane"></i> Let's Connect</h3>
+            <p>I'm open to learning opportunities, technical projects, collaboration, and professional connections.</p>
+            <div class="contact-links">
+                <a href="https://linkedin.com/in/kyrillos-saeed" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://github.com/ks20220914-commits" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                <a href="mailto:kyrillos.saeed@example.com"><i class="fas fa-envelope"></i> Email</a>
+                <a href="https://wa.me/201234567890" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="#"><i class="fas fa-file-pdf"></i> Download CV</a>
+            </div>
+            <!-- Contact Form -->
+            <form class="contact-form" id="contactForm">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <input type="text" placeholder="Subject" required>
+                <textarea placeholder="Your Message..." required></textarea>
+                <button type="submit"><i class="fas fa-paper-plane"></i> Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <div class="footer">
+        <div>&copy; 2026 <span>Kyrillos Saeed</span> — Telecommunications Engineering</div>
+        <div class="social-icons">
+            <a href="https://github.com/ks20220914-commits" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/kyrillos-saeed" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://wa.me/201234567890" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </div>
+
+</div>
+
+<!-- ===== BACK TO TOP ===== -->
+<button id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></button>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // ---------- PARTICLES ----------
+        const particlesContainer = document.getElementById('particles-js');
+        for (let i = 0; i < 80; i++) {
+            const particle = document.createElement('div');
+            particle.style.cssText = 
+                position: absolute;
+                width: ${Math.random() * 4 + 2}px;
+                height: ${Math.random() * 4 + 2}px;
+                background: rgba(56, 189, 248, ${Math.random() * 0.5 + 0.1});
+                border-radius: 50%;
+                top: ${Math.random() * 100}%;
+                left: ${Math.random() * 100}%;
+                animation: float ${Math.random() * 10 + 5}s infinite ease-in-out;
+                animation-delay: ${Math.random() * 5}s;
+            ;
+            particlesContainer.appendChild(particle);
+        }
+        // Add floating animation
+        const style = document.createElement('style');
+        style.textContent = 
+            @keyframes float {
+                0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+                25% { transform: translate(10px, -20px) scale(1.2); opacity: 0.8; }
+                50% { transform: translate(-10px, -40px) scale(0.8); opacity: 0.5; }
+                75% { transform: translate(15px, -10px) scale(1.1); opacity: 0.7; }
+            }
+        ;
+        document.head.appendChild(style);
+
+        // ---------- TYPING EFFECT ----------
+        const texts = ['Data Science Enthusiast', 'Networking Learner', 'Python Developer', 'Cloud Explorer', 'Tech Lover'];
+        let index = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typedTextEl = document.getElementById('typed-text');
+            function typeEffect() {
+            const currentText = texts[index];
+            if (isDeleting) {
+                typedTextEl.textContent = currentText.substring(0, charIndex--);
+                if (charIndex < 0) {
+                    isDeleting = false;
+                    index = (index + 1) % texts.length;
+                    setTimeout(typeEffect, 500);
+                    return;
+                }
+                setTimeout(typeEffect, 50);
+            } else {
+                typedTextEl.textContent = currentText.substring(0, charIndex++);
+                if (charIndex > currentText.length) {
+                    isDeleting = true;
+                    setTimeout(typeEffect, 1500);
+                    return;
+                }
+                setTimeout(typeEffect, 100);
+            }
+        }
+        typeEffect();// ---------- COUNTERS ----------
+        const counters = document.querySelectorAll('.number');
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = +counter.getAttribute('data-target');
+                    let current = 0;
+                    const increment = target / 80;
+                    const updateCounter = () => {
+                        current += increment;
+                        if (current < target) {
+                            counter.textContent = Math.ceil(current);
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.textContent = target;
+                        }
+                    };
+                    updateCounter();
+                    counterObserver.unobserve(counter);
+                }
+            });
+        }, { threshold: 0.3 });
+        counters.forEach(c => counterObserver.observe(c));
+
+        // ---------- SKILL BARS ----------
+        const skillBars = document.querySelectorAll('.skill-bar .fill');
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, { threshold: 0.2 });
+        skillBars.forEach(bar => skillObserver.observe(bar));
+
+        // ---------- DARK MODE ----------
+        const darkToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            body.classList.add('dark-mode');
+            darkToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+        darkToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled');
+                darkToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                localStorage.setItem('darkMode', 'disabled');
+                darkToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        });
+
+        // ---------- BACK TO TOP ----------
+        const backBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) backBtn.classList.add('show');
+            else backBtn.classList.remove('show');
+        });
+        backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // ---------- FILTER PROJECTS ----------
+        const filterBtns = document.querySelectorAll('.filter-buttons button');
+        const projectCards = document.querySelectorAll('.project-card');
+        filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.getAttribute('data-filter');
+                projectCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category').includes(filter)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // ---------- GITHUB STATS (Static for now) ----------
+        document.getElementById('repoCount').textContent = '4';
+        document.getElementById('starCount').textContent = '2';
+        document.getElementById('forkCount').textContent = '1';
+
+        // ---------- CONTACT FORM ----------
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('✅ Thank you! Your message has been sent. I will get back to you soon.');
+            this.reset();
+        });
+
+        // ---------- DOWNLOAD CV ----------
+        window.downloadCV = function() {
+            alert('📄 Your CV will be downloaded shortly. (Add your PDF file to the project)');
+            // window.location.href = 'cv.pdf';
+        };
+    });
+</script>
+
+</body>
+</html>
+`
