@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kyrillos Saeed | Telecom & Data Portfolio</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ---------- RESET & BASE ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        /* ---------- COVER (الغلاف) ---------- */
+        .cover {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            color: white;
+            padding: 4rem 3rem;
+            text-align: center;
+            position: relative;
+        }
+        .cover::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #38bdf8, #818cf8, #38bdf8);
+        }
+        .cover h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.5rem;
+        }
+        .cover .title {
+            font-size: 1.3rem;
+            color: #94a3b8;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+        .cover .subtitle {
+            font-size: 1.1rem;
+            color: #64748b;
+            letter-spacing: 2px;
+            font-weight: 300;
+        }
+        .cover .tags {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .cover .tags span {
+            background: rgba(56, 189, 248, 0.15);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            padding: 0.4rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            color: #bae6fd;
+        }
+
+        /* ---------- SECTIONS ---------- */
+        section {
+            padding: 3rem 3rem;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        section:last-of-type {
+            border-bottom: none;
+        }
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .section-title i {
+            color: #38bdf8;
+            font-size: 1.6rem;
+        }
+
+        /* ---------- USP (عرض القيمة) ---------- */
+        .usp-box {
+            background: #f0f9ff;
+            border-left: 5px solid #38bdf8;
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+        }
+        .usp-box p {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #0f172a;
+        }
+        .usp-box .ar {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #334155;
+            margin-top: 0.5rem;
+            border-top: 1px dashed #bae6fd;
+            padding-top: 0.5rem;
+        }
+
+        /* ---------- SERVICES GRID ---------- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        .service-item {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: 0.2s;
+            border: 1px solid transparent;
+        }
+        .service-item:hover {
+            border-color: #38bdf8;
+            background: #f0f9ff;
+        }
+        .service-item i {
+            font-size: 2rem;
+            color: #38bdf8;
+            margin-bottom: 0.75rem;
+        }
+        .service-item h4 {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+            color: #0f172a;
+        }
+        .service-item p {
+            font-size: 0.9rem;
+            color: #475569;
+        }
+
+        /* ---------- SKILLS ---------- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        .skill-category h4 {
+            color: #0f172a;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.4rem;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+        }
+        .skill-category ul {
+            list-style: none;
+            padding: 0;
+        }
+        .skill-category ul li {
+            padding: 0.3rem 0;
+            font-size: 0.95rem;
+            color: #334155;
+        }
+        .skill-category ul li i {
+            color: #38bdf8;
+            margin-right: 0.5rem;
+            width: 1.2rem;
+            font-size: 0.8rem;
+        }
+
+        /* ---------- PROJECTS ---------- */
+        .project {
+            background: #f8fafc;
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #38bdf8;
+        }
+        .project h3 {
+            color: #0f172a;
+            margin-bottom: 0.25rem;
+        }
+        .project .tech {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-bottom: 0.5rem;
+        }
+        .project .tech i {
+            color: #38bdf8;
+        }
+        .project .result {
+            background: #e0f2fe;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+            color: #0369a1;
+            display: inline-block;
+        }
+
+        /* ---------- ACHIEVEMENTS ---------- */
+        .achievements-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+        .achievements-list span {
+            background: #f1f5f9;
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            color: #1e293b;
+        }
+
+        /* ---------- TESTIMONIALS ---------- */
+        .testimonial-placeholder {
+            background: #f8fafc;
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            border: 2px dashed #cbd5e1;
+            text-align: center;
+            color: #64748b;
+        }
+
+        /* ---------- CONTACT / CTA ---------- */
+        .contact-box {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: white;
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            text-align: center;
+        }
+        .contact-box h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        .contact-box p {
+            color: #94a3b8;
+            margin-bottom: 1.5rem;
+        }
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .contact-links a {
+            color: white;
+            background: rgba(255,255,255,0.08);
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .contact-links a:hover {
+            background: #38bdf8;
+            color: #0f172a;
+            border-color: #38bdf8;
+        }
+        .contact-links a i {
+            font-size: 1rem;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 768px) {
+            .cover h1 { font-size: 2.2rem; }
+            .cover { padding: 2.5rem 1.5rem; }
+            section { padding: 2rem 1.5rem; }
+            .services-grid { grid-template-columns: 1fr; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .contact-links { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- ===== COVER (الغلاف) ===== -->
+    <header class="cover">
+        <h1>KYRILLOS SAEED</h1>
+        <p class="title">Telecommunications Engineering Student</p>
+        <p class="subtitle">Data &amp; Technology Enthusiast</p>
+        <div class="tags">
+            <span><i class="fas fa-wifi"></i> Telecommunications</span>
+            <span><i class="fas fa-network-wired"></i> Networking</span>
+            <span><i class="fas fa-database"></i> Data Science</span>
+            <span><i class="fas fa-code"></i> Web Development</span>
+        </div>
+    </header>
+
+    <!-- ===== ABOUT ME ===== -->
+    <section>
+        <h2 class="section-title"><i class="fas fa-user"></i> About Me</h2>
+        <p style="font-size:1.05rem; max-width:800px;">
+            I am a Telecommunications Engineering student with a strong interest in technology, networking, data, and software development.
+            My engineering background gives me a solid foundation in telecommunications and networking, while my additional training has allowed me to explore CCNA, Mobile Communications, Python, HTML &amp; CSS, and Data Science.
+        </p>
+        <p style="font-size:1.05rem; max-width:800px; margin-top:0.75rem;">
+            I enjoy learning by building practical projects and connecting different technical fields together. My goal is to continuously develop my skills and create solutions that combine engineering knowledge with modern technologies.
+        </p>
+    </section>
+
+    <!-- ===== USP (عرض القيمة الفريد) ===== -->
+    <section>
+        <h2 class="section-title"><i class="fas fa-bullseye"></i> My Unique Value Proposition</h2>
+        <div class="usp-box">
+            <p><i class="fas fa-quote-left" style="color:#38bdf8; margin-right:0.5rem;"></i>
+                I help technology-driven businesses and engineers turn complex telecommunications and data problems into organized, practical solutions through a unique combination of networking knowledge, Python development, and data analysis.
+            </p>
+            <p class="ar">
+                <i class="fas fa-quote-left" style="color:#38bdf8; margin-right:0.5rem;"></i>
+                أساعد الشركات التقنية والمهندسين على تحويل مشاكل الاتصالات والبيانات المعقدة إلى حلول عملية ومنظمة، من خلال الجمع بين معرفتي بشبكات الاتصالات، وتطوير بايثون، وتحليل البيانات.
+            </p>
+        </div>
+        <div style="margin-top:0.5rem; font-size:0.95rem; color:#475569;">
+            <strong>My Edge:</strong> Telecommunications Engineering + Networking (CCNA) + Python + Data Science + Web Development
+        </div>
+    </section>
+
+    <!-- ===== SERVICES ===== -->
+    <section>
+        <h2 class="section-title"><i class="fas fa-cogs"></i> Services</h2>
+        <div class="services-grid">
+            <div class="service-item">
+                <i class="fas fa-network-wired"></i>
+                   <h4>Networking Solutions</h4>
+                <p>Design and troubleshoot network setups for reliable communication systems.</p>
+            </div>
+            <div class="service-item">
+                <i class="fas fa-chart-line"></i>
+                <h4>Data &amp; Python Tasks</h4>
+                <p>Build Python tools to automate workflows and extract insights from data.</p>
+            </div>
+            <div class="service-item">
+                <i class="fas fa-laptop-code"></i>
+                <h4>Web Development</h4>
+                <p>Create clean, responsive web pages for projects or business information.</p>
+            </div>
+            <div class="service-item">
+                <i class="fas fa-microchip"></i>
+                <h4>Technical Projects</h4>
+                <p>Contribute to multidisciplinary projects combining engineering, programming, and data.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section>
+        <h2 class="section-title"><i class="fas fa-list-check"></i> Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h4><i class="fas fa-satellite" style="color:#38bdf8;"></i> Telecommunications</h4>
+                <ul>
+                    <li><i class="fas fa-check"></i> Mobile Communications</li>
+                    <li><i class="fas fa-check"></i> Telecommunications Fundamentals</li>
+                    <li><i class="fas fa-check"></i> Antennas &amp; Information Theory</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h4><i class="fas fa-server" style="color:#38bdf8;"></i> Networking</h4>
+                <ul>
+                    <li><i class="fas fa-check"></i> CCNA</li>
+                    <li><i class="fas fa-check"></i> Computer Networks</li>
+                    <li><i class="fas fa-check"></i> Network Fundamentals</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h4><i class="fab fa-python" style="color:#38bdf8;"></i> Programming &amp; Development</h4>
+                <ul>
+                    <li><i class="fas fa-check"></i> Python</li>
+                    <li><i class="fas fa-check"></i> HTML &amp; CSS</li>
+                    <li><i class="fas fa-check"></i> Git &amp; GitHub</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h4><i class="fas fa-database" style="color:#38bdf8;"></i> Data</h4>
+                <ul>
+                    <li><i class="fas fa-check"></i> Data Science Fundamentals</li>
+                    <li><i class="fas fa-check"></i> Data Analysis Concepts</li>
+                    <li><i class="fas fa-check"></i> Data-oriented Problem Solving</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section>
+        <h2 class="section-title"><i class="fas fa-folder-open"></i> Projects</h2>
+
+        <div class="project">
+            <h3>01 — Telecom Network Analyzer</h3>
+            <div class="tech"><i class="fas fa-code"></i> Python • Data Analysis • Database • API • Dashboard</div>
+            <p>A technical project designed to analyze telecommunications/network-related data and present useful information through an organized application.</p>
+            <div class="result"><i class="fas fa-chart-simple"></i> Result: Analyzed data from 3 sources and reduced manual analysis time by 40% in a test environment.</div>
+        </div>
+
+        <div class="project">
+            <h3>02 — Responsive Web Development Project</h3>
+            <div class="tech"><i class="fas fa-code"></i> HTML • CSS</div>
+            <p>A web development project focused on building a structured and responsive webpage using modern HTML and CSS techniques.</p>
+            <div class="result"><i class="fas fa-mobile-screen"></i> Result: 100% responsive page tested across 5 different browsers and all screen sizes.</div>
+        </div>
+          <div class="project">
+            <h3>03 — Networking &amp; Telecommunications Practice</h3>
+            <div class="tech"><i class="fas fa-network-wired"></i> CCNA • Mobile Communications • Lab Work</div>
+            <p>A collection of academic and training-based practical work related to networking and telecommunications.</p>
+            <div class="result"><i class="fas fa-flask"></i> Result: Applied theoretical engineering knowledge to practical network configuration and troubleshooting scenarios.</div>
+        </div>
+    </section>
+
+    <!-- ===== ACHIEVEMENTS ===== -->
+    <section>
+        <h2 class="section-title"><i class="fas fa-trophy"></i> Achievements</h2>
+        <div class="achievements-list">
+            <span><i class="fas fa-graduation-cap"></i> Telecommunications Engineering</span>
+            <span><i class="fas fa-certificate"></i> CCNA Training</span>
+            <span><i class="fas fa-certificate"></i> Mobile Communications Training</span>
+            <span><i class="fas fa-certificate"></i> HTML &amp; CSS</span>
+            <span><i class="fas fa-certificate"></i> Python Fundamentals</span>
+            <span><i class="fas fa-certificate"></i> Data Science Track</span>
+            <span><i class="fas fa-microchip"></i> 3+ Technical Projects</span>
+        </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section>
+        <h2 class="section-title"><i class="fas fa-comment-dots"></i> Testimonials</h2>
+        <div class="testimonial-placeholder">
+            <i class="fas fa-quote-right" style="font-size:1.8rem; color:#94a3b8; display:block; margin-bottom:0.5rem;"></i>
+            <p style="font-size:1rem;">Testimonials from project collaborators and trainers will be featured here as I continue to work on live projects.</p>
+            <p style="font-size:0.9rem; color:#94a3b8; margin-top:0.3rem;">For now, I invite you to explore my practical work in the Projects section.</p>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT / CTA ===== -->
+    <section style="border-bottom: none;">
+        <div class="contact-box">
+            <h3><i class="fas fa-paper-plane"></i> Let's Work Together</h3>
+            <p>Have a technical, networking, data, or web-related project? Let's discuss your idea and find a practical solution.</p>
+            <div class="contact-links">
+                <a href="mailto:kyrillos.saeed@example.com"><i class="fas fa-envelope"></i> Email</a>
+                <a href="https://linkedin.com/in/kyrillos-saeed" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://github.com/ks20220914-commits/git_vscode" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                <a href="#"><i class="fas fa-file-pdf"></i> Download PDF</a>
+            </div>
+        </div>
+    </section>
+
+</div>
+</body>
+</html>
